@@ -1,7 +1,7 @@
 NAME = cub3d
 
 SRCS = inc/GNL/get_next_line.c cub3d.c utils/ft_check.c utils/ft_error.c \
-		utils/ft_init.c \
+		utils/ft_init.c utils/ft_read_map.c \
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc

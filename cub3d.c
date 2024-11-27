@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/26 15:07:01 by musozer          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:40:40 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,14 @@ int	main(int ac, char **av)
 		ft_err_msg("Malloc failed");
 	ft_init(data, av[1]);
 	ft_control(data);
+	ft_read_map(data);
+	int i = 0;
+	while (1)
+	{
+		if (!data->map->map[i])
+		    break ;
+		printf("%s", data->map->map[i]);
+		i++;
+	}
 	return (0);
 }

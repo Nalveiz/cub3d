@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/29 21:19:44 by musozer          ###   ########.fr       */
+/*   Updated: 2024/11/30 02:43:30 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main(int ac, char **av)
 		ft_err_msg("Malloc failed");
 	ft_init(data, av[1]);
 	ft_read_map(data);
-	int i = 0;
-	while (1)
-	{
-		if (!data->map->map[i])
-		    break ;
-		printf("%s", data->map->map[i]);
-		i++;
-	}
+	// int i = 0;
+	// while (1)
+	// {
+	// 	if (!data->map->map[i])
+	// 	    break ;
+	// 	printf("%s", data->map->map[i]);
+	// 	i++;
+	// }
 	return (0);
 }

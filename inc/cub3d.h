@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/29 22:29:10 by musozer          ###   ########.fr       */
+/*   Updated: 2024/11/30 00:20:35 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	ft_is_blank(char *c);
 void	ft_is_space(t_data *data);
 int	ft_count_check(t_data *data);
 void	ft_check_txtrue(t_data *data, char *line);
+
+void	ft_textrue_control(t_data *data);
 
 
 

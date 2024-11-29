@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:11:03 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/29 23:53:41 by musozer          ###   ########.fr       */
+/*   Updated: 2024/11/30 00:49:57 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_check_txtrue(t_data *data, char *line)
 	while (line[i] && line[i] != ' ' && !(line[i] < 14 && line[i] > 8))
 		i++;
 	format = ft_substr(line, 0, i);
-	while (line[i] && line[i] == ' ' && (line[i] < 14 && line[i] > 8))
+	while (line[i] && (line[i] == ' ' || (line[i] < 14 && line[i] > 8)))
 		i++;
 	if (ft_strncmp(format, "SO", 2) == 0 && ++data->map->count[SO])
 		data->txture->txtres[SO] = ft_strdup
@@ -93,10 +93,35 @@ void	ft_check_txtrue(t_data *data, char *line)
 	else if (ft_count_check(data) == -1)
 		ft_err_msg("Wrong texture format");
 	else
-		//texture formatı doğru harita kontrolü yapılsın
-		ft_err_msg("true texture format");
+		ft_textrue_control(data);
 
-	return ;
 }
+void	ft_textrue_control(t_data *data)
+{
+	int		i;
+	char	newline = '\n';
+	char	*str;
 
+	i = 0;
+	while (i < 4)
+	{
+		str = ft_strtrim(data->txture->txtres[i], &newline);
+		free(data->txture->txtres[i]);
+		data->txture->txtres[i] = str;
+		printf("%d\n", data->fd);
+		printf("%s", data->txture->txtres[i]);
+		data->fd = open(data->txture->txtres[i], O_RDONLY, 777);
+		printf("%d\n", data->fd);
+
+		if (data->fd == -1)
+		{
+			//printf("%s", data->txture->txtres[i]);
+			ft_err_msg("Texture not found");
+			close(data->fd);
+		}
+		close(data->fd);
+		i++;
+	}
+	ft_err_msg("Texture true");
+}
 

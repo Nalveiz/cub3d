@@ -1,8 +1,9 @@
 
 
 
+ C    35,        19    ,  73
 
-SO      textures/simonkraft/respawn_anchor_side4.xpm
+SO      textures/simonkraft/respawn_anchor_side4.xpm     
 NO        textures/simonkraft/respawn_anchor_side0.xpm
 WE        textures/simonkraft/respawn_anchor_side3.xpm
 EA        textures/simonkraft/respawn_anchor_side2.xpm
@@ -26,6 +27,5 @@ F 15,6,40
 111110001111111
 11111111111111
 
-C    35,        19    ,  73
 
 

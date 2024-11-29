@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/27 18:53:03 by musozer          ###   ########.fr       */
+/*   Updated: 2024/11/29 22:29:10 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
-# define NO 0
-# define SO 1
+# define SO 0
+# define NO 1
 # define WE 2
 # define EA 3
 # define C 4
@@ -32,11 +32,11 @@
 
 typedef struct s_texture
 {
-	void	**textrues;
+	char	**txtres;
 	char	**floor;
 	char	**ceiling;
 
-}	t_texture;
+}	t_txture;
 
 
 
@@ -55,6 +55,7 @@ typedef struct s_data
 	int		map_len;
 	int		endian;
 	t_map	*map;
+	t_txture	*txture;
 	int 	fd;
 	int		i;
 	int		j;
@@ -67,6 +68,11 @@ void	ft_err_msg(char *error_message);
 void	ft_init(t_data *data, char *av);
 void	ft_read_map(t_data *data);
 void	map_lenght(t_data *data);
+int	ft_is_blank(char *c);
+void	ft_is_space(t_data *data);
+int	ft_count_check(t_data *data);
+void	ft_check_txtrue(t_data *data, char *line);
+
 
 
 

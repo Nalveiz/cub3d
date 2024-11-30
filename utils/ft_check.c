@@ -6,6 +6,8 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:11:03 by musozer           #+#    #+#             */
+
+/*   Updated: 2024/11/30 09:07:18 by soksak           ###   ########.fr       */
 /*   Updated: 2024/11/30 08:59:22 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -53,37 +55,60 @@ void	ft_is_space(t_data *data)
 			data->i++;
 		else
 		{
+			if (ft_count_check(data) == 0)
+			{
+				data->txture->txtres[6] = NULL;
+				break;
+			}
 			ft_check_txtrue(data, data->map->map[data->i]);
 			data->i++;;
 		}
 	}
+	ft_textrue_control(data);
+}
+
+static char	*my_strdup(char *s1)
+{
+	char	*dst;
+	int		i;
+
+	dst = malloc(ft_strlen(s1) + 1);
+	i = 0;
+	if (!dst)
+		return (NULL);
+	while (s1[i])
+	{
+		dst[i] = s1[i];
+		i++;
+	}
+	dst[i] = '\0';
+	free(s1);
+	return (dst);
 }
 
 
 static void	ft_check_txture_helper(char*line, char *format, int i, t_data *data)
 {
 	if (ft_strncmp(format, "SO", 2) == 0 && ++data->map->count[SO] == 1)
-		data->txture->txtres[SO] = ft_strdup
+		data->txture->txtres[SO] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_strncmp(format, "NO", 2) == 0 && ++data->map->count[NO] == 1)
-		data->txture->txtres[NO] = ft_strdup
+		data->txture->txtres[NO] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_strncmp(format, "WE", 2) == 0 && ++data->map->count[WE] == 1)
-		data->txture->txtres[WE] = ft_strdup
+		data->txture->txtres[WE] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_strncmp(format, "EA", 2) == 0 && ++data->map->count[EA] == 1)
-		data->txture->txtres[EA] = ft_strdup
+		data->txture->txtres[EA] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_strncmp(format, "C", 1) == 0 && ++data->map->count[C] == 1)
-		data->txture->txtres[C] = ft_strdup
+		data->txture->txtres[C] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_strncmp(format, "F", 1) == 0 && ++data->map->count[F] == 1)
-		data->txture->txtres[F] = ft_strdup
+		data->txture->txtres[F] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
 	else if (ft_count_check(data) == -1)
 		ft_err_msg("Wrong texture format");
-	else
-		ft_textrue_control(data);
 }
 
 
@@ -99,6 +124,7 @@ void	ft_check_txtrue(t_data *data, char *line)
 	while (line[i] && (line[i] == ' ' || (line[i] < 14 && line[i] > 8)))
 		i++;
 	ft_check_txture_helper(line, format, i, data);
+	free(format);
 }
 
 char *ft_space_trimmer(char *line)
@@ -129,6 +155,14 @@ void	ft_textrue_control(t_data *data)
 		close(data->fd);
 		i++;
 	}
+	i = 0;
+	while (data->txture->txtres[i])
+	{
+		printf("%s\n", data->txture->txtres[i]);
+		printf("i = %d\n", data->i);
+		i++;
+	}
+	ft_err_msg("Texture true");
 	ft_comma_control(data->txture->txtres[C]);
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);

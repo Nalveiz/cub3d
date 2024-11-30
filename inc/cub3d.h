@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/30 02:37:43 by soksak           ###   ########.fr       */
+/*   Updated: 2024/11/30 08:50:03 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_texture
 	char	**txtres;
 	char	**floor;
 	char	**ceiling;
+	int		c[3];
+	int		f[3];
 
 }	t_txture;
 
@@ -74,6 +76,8 @@ int		ft_count_check(t_data *data);
 void	ft_check_txtrue(t_data *data, char *line);
 void	ft_textrue_control(t_data *data);
 char	*ft_space_trimmer(char *line);
-
+void	ft_rgb_control(t_data *data, char **rgb, int fc);
+void	ft_comma_control(char *str);
+void	ft_double_free(char **str);
 
 #endif

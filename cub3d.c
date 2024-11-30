@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/30 02:43:30 by soksak           ###   ########.fr       */
+/*   Updated: 2024/11/30 10:21:51 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ int	main(int ac, char **av)
 	// 	printf("%s", data->map->map[i]);
 	// 	i++;
 	// }
+	printf("%d\n", data->txture->c[0]);
+	printf("%d\n", data->txture->c[1]);
+	printf("%d\n", data->txture->c[2]);
 	return (0);
 }

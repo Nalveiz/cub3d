@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:11:03 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/30 02:38:05 by soksak           ###   ########.fr       */
+/*   Updated: 2024/11/30 08:59:22 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,9 @@ void	ft_textrue_control(t_data *data)
 		close(data->fd);
 		i++;
 	}
-	//ft_err_msg("Texture true");
+	ft_comma_control(data->txture->txtres[C]);
+	ft_comma_control(data->txture->txtres[F]);
+	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);
+	ft_rgb_control(data, ft_split(data->txture->txtres[F], ','), 0);
 }
 

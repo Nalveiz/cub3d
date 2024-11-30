@@ -156,13 +156,14 @@ void	ft_textrue_control(t_data *data)
 		i++;
 	}
 	i = 0;
-	while (data->txture->txtres[i])
-	{
-		printf("%s\n", data->txture->txtres[i]);
-		printf("i = %d\n", data->i);
-		i++;
-	}
-	ft_err_msg("Texture true");
+	// Test For Texture Control
+	// while (data->txture->txtres[i])
+	// {
+	// 	printf("%s\n", data->txture->txtres[i]);
+	// 	printf("i = %d\n", data->i);
+	// 	i++;
+	// }
+	// //ft_err_msg("Texture true");
 	ft_comma_control(data->txture->txtres[C]);
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);

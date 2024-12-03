@@ -23,11 +23,11 @@ int	ft_is_blank(char *c)
 	i = 0;
 	while (c[i])
 	{
+		if (c[0] == '\n')
+			return (-1);
     	if (c[i] == ' ' || c[i] == '\t'
 			|| c[i] == '\v' || c[i] == '\f' || c[i] == '\r')
 			i++;
-		else if (c[i] == '\n')
-			return (-1);
 		else
 			return (i);
 	}
@@ -121,8 +121,6 @@ void	ft_check_txtrue(t_data *data, char *line)
 	while (line[i] && line[i] != ' ' && !(line[i] < 14 && line[i] > 8))
 		i++;
 	format = ft_substr(line, 0, i);
-	while (line[i] && (line[i] == ' ' || (line[i] < 14 && line[i] > 8)))
-		i++;
 	ft_check_txture_helper(line, format, i, data);
 	free(format);
 }
@@ -133,7 +131,7 @@ char *ft_space_trimmer(char *line)
 	char	*new_line;
 
 	spaces = "\t\v\f\r\n ";
-	new_line = ft_strtrim(line, spaces);
+	new_line = ft_strdup(ft_strtrim(line, spaces));
 	free(line);
 	return (new_line);
 }

@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/11/30 08:50:03 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/03 18:42:47 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_texture
 typedef struct s_map
 {
 	char	**map;
+	int        width;
+	int        height;
+
+	char	**map3d;
 	int		count[6];
 }	t_map;
 
@@ -56,6 +60,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		map_len;
 	int		endian;
+	int		flag;
 	t_map	*map;
 	t_txture	*txture;
 	int 	fd;

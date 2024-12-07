@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/03 18:42:47 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:45:17 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ char	*ft_space_trimmer(char *line);
 void	ft_rgb_control(t_data *data, char **rgb, int fc);
 void	ft_comma_control(char *str);
 void	ft_double_free(char **str);
+void	ft_map_check(t_data *data);
 
 #endif

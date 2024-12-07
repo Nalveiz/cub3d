@@ -166,5 +166,7 @@ void	ft_textrue_control(t_data *data)
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);
 	ft_rgb_control(data, ft_split(data->txture->txtres[F], ','), 0);
+	ft_map_check(data);
+
 }
 

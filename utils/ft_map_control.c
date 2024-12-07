@@ -6,93 +6,82 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 23:22:27 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/03 20:06:59 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/07 13:11:45 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../inc/cub3d.h"
+#include "../inc/cub3d.h"
 
-// void ft_map_cpy(t_data *data)
-// {
-// 	char    *tmp;
-// 	static int i;
+static void ft_wall_check(char *line)
+{
+	int i;
 
-// 	i = 0;
-// 	data->map->height = data->map_len - data->i;
-// 	data->map->map3d = (char **)malloc(sizeof(char *) * (data->map->height + 1));
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] != '1')
+		ft_err_msg("Wron map format");
+	i = ft_strlen(line) -2;
+	while (i >= 0 && line[i] == ' ')
+		i--;
+	if (i >= 0 && line[i] != '1')
+		ft_err_msg("Wrongggg map format");
+}
+static void	ft_char_check(char *line, int flag)
+{
+	int	i;
 
-// 	data->map->map3d[i] = ft_space_trimmer(data->map->map[data->i]);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != 'N' && line[i] != 'S'
+			&& line[i] != 'E' && line[i] != 'W'
+			&& line[i] != '0' && line[i] != '1'
+			&& line[i] != ' ' && line[i] != '\n')
+			ft_err_msg("Wrong ccharacter in map");
+		if (flag == 0 && (line[i] != '1' && line[i] != ' ' && line[i] != '\n'))
+		    ft_err_msg("Wrong map format");
+		i++;
+	}
+}
 
-// 	if (data->map->width < (int) ft_strlen(data->map->map3d[i]))
-// 		data->map->width = (int) ft_strlen(data->map->map3d[i]);
-// 	while (tmp[i] && (tmp[i] == ' '))
-// 		i++;
-// 	while (tmp[i])
-// 	{
-// 		if (tmp[i] != 'N' && tmp[i] != 'S' && tmp[i] != 'E' && tmp[i] != 'W'
-// 			&& tmp[i] != '0' && tmp[i] != '1'
-// 			&& tmp[i] != ' ' && tmp[i] != '\n')
-// 			check++;
-// 		i++;
-// 	}
+static	void	ft_map_start_check(t_data *data, char *line)
+{
+	ft_char_check(line,data->flag);
 
-// }
+	if (data->i == data->map->height)
+		data->flag = 0;
+	data->flag = 1;
+	ft_wall_check(line);
+	// eğer ki hata yoksa data->map->map[data->i] ' si free lenicek en son map free olucak
+}
 
-// void ft_char_control(t_data *data, char *str)
-// {
-// 	data->j = 0;
-// 	while (str[data->j])
-// 	{
-// 		if (str[data->j] == ' ' || (str[data->j] == '\n' && data->j != 0))
-// 			data->j++;
-// 		else if (str[data->j] == '1' && (data->flag == 0
-// 			|| data->j ==data->map_len))
-// 			data->j++;
-// 		else if ((str[data->j] == 'N' || str[data->j] == 'S'
-// 			|| str[data->j] == 'E' || str[data->j] == 'W'
-// 			|| str[data->j] == '0' || str[data->j] == '1')
-// 			&& data->flag == 1)
-// 			data->j++;
-// 		else
-// 			ft_err_msg("Wrong character in map");
-// 	}
-// 	ft_with_check(data, str);
-// }
+void	ft_map_check(t_data *data)
+{
+	int i;
+	int j;
 
-
-
-// int	ft_map_start_check(t_data *data)
-// {
-// 	ft_first_check(data, data->map->map[data->i]);
-// 	ft_char_control(data, data->map->map[data->i]);
-
-
-
-
-// 	// char *wall;
-// 	// int i;
-
-// 	// i = 0;
-// 	// wall = data->map->map[data->i];
-// 	// while (wall[i])
-// 	// {
-// 	// 	if (wall[i] == '1')
-// 	// 		i++;
-// 	// 	else if (wall[i] = ' ' || (wall[i] < 14 && wall[i] > 8))
-// 	// 		i++;
-// 	// 	else
-// 	// 		ft_err_msg("Wrong map format");
-// 	// }
-// 	// return (1);
-// }
-
-// ft_map_check(t_data *data)
-// {
-// 	while (data->map->map[data->i][data->j])
-// 	{
-// 		if (ft_is_blank(data->map->map[data->i]) == -1)
-// 			data->i++;
-// 		else if (ft_map_start_check(data->map->map[data->i]) == 1)
-
-// 	}
-// }
+	j = 0;
+	i = data->i;
+	// burda en alttaki gereksiz satırları atlıyorum mapin gerçek uzunluğu için
+	while (ft_is_blank(data->map->map[data->map_len - 1]) == -1)
+		data->map_len--;
+	data->map->height = data->map_len - data->i;
+	// mapin ilk satırını kontrol ediyorum son satıra kadar
+	while (data->map->map[data->i] && data->i < data->map_len)
+	{
+		if (data->map->width < (int) ft_strlen(data->map->map[data->i]))
+			data->map->width = (int) ft_strlen(data->map->map[data->i]);
+		ft_map_start_check(data, data->map->map[data->i]);
+		data->i++;
+	}
+	// eğer hata yoksa map3d oluşturuluyor ve içine atılıyor
+	data->map->map3d = (char **)malloc(sizeof(char *) * (data->map->height + 1));
+	while (i < data->map_len)
+	{
+		data->map->map3d[j] = ft_strtrim(data->map->map[i], "\n");
+		i++;
+		j++;
+	}
+	// soksakım ana mantık bu şekilde yaptım sonra yine configre ederiz bundan sonra :>)
+}

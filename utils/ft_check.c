@@ -135,6 +135,36 @@ char *ft_space_trimmer(char *line)
 	free(line);
 	return (new_line);
 }
+static void	ft_char_check(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = data->i;
+	while (data->map->map[i])
+	{
+		j = -1;
+		while (data->map->map[i][++j])
+		{
+
+			if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
+				|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
+				data->flag1++;
+			if (data->flag1 == 1)
+			{
+				data->plyr->x = (double)j;
+				data->ply_x = j;
+				data->plyr->y = (double)i - data->i;
+				data->ply_y = i - data->i;
+				data->flag1++;
+			}
+			if (data->flag1 > 2)
+				ft_err_msg("wrong character !!!");
+		}
+		i++;
+	}
+
+}
 
 void	ft_textrue_control(t_data *data)
 {
@@ -166,6 +196,7 @@ void	ft_textrue_control(t_data *data)
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);
 	ft_rgb_control(data, ft_split(data->txture->txtres[F], ','), 0);
+	ft_char_check(data);
 	ft_map_check(data);
 
 }

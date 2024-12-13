@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/06 17:45:17 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/13 19:47:29 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct s_texture
 
 }	t_txture;
 
+typedef struct s_plyr
+{
+	double	x;
+	double	y;
+	//double	dir;
+	//double	plane;
+}	t_plyr;
 
 
 typedef struct s_map
@@ -47,7 +54,7 @@ typedef struct s_map
 	char	**map;
 	int        width;
 	int        height;
-
+	char	**cpymap;
 	char	**map3d;
 	int		count[6];
 }	t_map;
@@ -61,11 +68,15 @@ typedef struct s_data
 	int		map_len;
 	int		endian;
 	int		flag;
+	int		flag1;
 	t_map	*map;
 	t_txture	*txture;
+	t_plyr	*plyr;
 	int 	fd;
 	int		i;
 	int		j;
+	int		ply_x;
+	int		ply_y;
 
 }	t_data;
 
@@ -85,5 +96,11 @@ void	ft_rgb_control(t_data *data, char **rgb, int fc);
 void	ft_comma_control(char *str);
 void	ft_double_free(char **str);
 void	ft_map_check(t_data *data);
+void	ft_cpymap_fill(t_data * data);
+void	ft_flood_fill(t_map *map, int x, int y);
+void	ft_printmap(t_map *map);
+
+
+
 
 #endif

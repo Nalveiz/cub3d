@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 23:22:27 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/11 16:00:45 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/13 16:04:35 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,9 @@ void	ft_map_check(t_data *data)
 
 	j = 0;
 	i = data->i;
-	// burda en alttaki gereksiz satırları atlıyorum mapin gerçek uzunluğu için
 	while (ft_is_blank(data->map->map[data->map_len - 1]) == -1)
 		data->map_len--;
 	data->map->height = data->map_len - data->i;
-	// mapin ilk satırını kontrol ediyorum son satıra kadar
 	while (data->map->map[data->i] && data->i < data->map_len)
 	{
 		if (data->map->width < (int) ft_strlen(data->map->map[data->i]))
@@ -107,7 +105,6 @@ void	ft_map_check(t_data *data)
 		data->i++;
 	}
 	ft_around_map_check(data,i);
-	// eğer hata yoksa map3d oluşturuluyor ve içine atılıyor
 	data->map->map3d = (char **)malloc(sizeof(char *) * (data->map->height + 1));
 	while (i < data->map_len)
 	{
@@ -116,4 +113,5 @@ void	ft_map_check(t_data *data)
 		j++;
 	}
 	data->map->map3d[j] = NULL;
+	ft_cpymap_fill(data);
 }

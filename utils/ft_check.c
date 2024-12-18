@@ -64,7 +64,7 @@ void	ft_is_space(t_data *data)
 			data->i++;;
 		}
 	}
-	ft_textrue_control(data);
+	ft_textrue_control(data, 0);
 }
 
 static char	*my_strdup(char *s1)
@@ -166,13 +166,27 @@ static void	ft_char_check(t_data *data)
 
 }
 
-void	ft_textrue_control(t_data *data)
+void	ft_textures_check(t_txture *txtrue, int i)
+{
+	size_t	last;
+
+	last = ft_strlen(txtrue->txtres[i]);
+	if (txtrue->txtres[i][--last] != 'm' || txtrue->txtres[i][--last] != 'p'
+		|| txtrue->txtres[i][--last] != 'x' || txtrue->txtres[i][--last] != '.')
+		ft_err_msg("Wrong file extension");
+
+
+
+}
+
+void	ft_textrue_control(t_data *data, size_t last)
 {
 	int		i;
 
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
+		last = ft_strlen(data->txture->txtres[i]) - 2;
 		data->txture->txtres[i] = ft_space_trimmer(data->txture->txtres[i]);
 		data->fd = open(data->txture->txtres[i], O_RDONLY, 777);
 		if (data->fd == -1)
@@ -181,23 +195,15 @@ void	ft_textrue_control(t_data *data)
 			close(data->fd);
 		}
 		close(data->fd);
-		i++;
+		if (data->txture->txtres[i][--last] != 'm' || data->txture->txtres[i][--last] != 'p'
+			|| data->txture->txtres[i][--last] != 'x' || data->txture->txtres[i][--last] != '.')
+			ft_err_msg("Wrong file extension");
 	}
-	i = 0;
-	// Test For Texture Control
-	// while (data->txture->txtres[i])
-	// {
-	// 	printf("%s\n", data->txture->txtres[i]);
-	// 	printf("i = %d\n", data->i);
-	// 	i++;
-	// }
-	// //ft_err_msg("Texture true");
 	ft_comma_control(data->txture->txtres[C]);
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);
 	ft_rgb_control(data, ft_split(data->txture->txtres[F], ','), 0);
 	ft_char_check(data);
 	ft_map_check(data);
-
 }
 

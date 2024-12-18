@@ -6,12 +6,31 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:14:41 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/13 19:52:06 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/17 17:20:29 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+static	void	ft_multi_map_fill(t_data *data, int i, int j)
+{
+    char	**map;
+
+	map = data->map->cpymap;
+	if ((i - 1  >= 0
+		&& map[i - 1][j] != 'B'
+		&& map[i - 1][j] != '1')
+		|| (j - 1 >= 0
+		&& map[i - 1][j] != 'B'
+		&& map[i - 1][j] != '1')
+		|| (i + 1 < data->map->height
+		&& map[i + 1][j] != 'B'
+		&& map[i + 1][j] != '1')
+		|| (j + 1 < (int)ft_strlen(map[i])
+		&& map[i][j + 1] != 'B'
+		&& map[i][j + 1] != '1'))
+		ft_err_msg("Multi map fill error");
+}
 void	ft_cpymap_fill(t_data * data)
 {
 	t_map	*map;
@@ -31,21 +50,40 @@ void	ft_cpymap_fill(t_data * data)
 		}
 		map->cpymap[data->i] = ft_strdup(map->map3d[data->i]);
 	}
-	printf("Player position: x = %f, y = %f\n", data->plyr->x, data->plyr->y);
-	printf("%d\n", data->map->height);
-	printf("naber\n");
 }
+
 
 void	ft_flood_fill(t_map *map, int x, int y)
 {
-		if (y < 0 || x < 0 || y >= map->height
+	if (y < 0 || x < 0 || y >= map->height
 		|| x >= (int)ft_strlen(map->cpymap[y])
 		|| map->cpymap[y][x] == 'B'
 		|| map->cpymap[y][x] == 'X')
 		return ;
 	map->cpymap[y][x] = 'X';
-	ft_flood_fill(map, y +1, x);
-	ft_flood_fill(map, y -1, x);
-	ft_flood_fill(map, y, x +1);
-	ft_flood_fill(map, y, x -1);
+	ft_flood_fill(map, x, y +1);
+	ft_flood_fill(map, x, y -1);
+	ft_flood_fill(map, x +1, y);
+	ft_flood_fill(map, x -1, y);
+}
+void	ft_flood_fill_chck(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map->cpymap[i])
+	{
+		j = 0;
+		while (data->map->cpymap[i][j])
+		{
+			if (data->map->cpymap[i][j] != 'B' && data->map->cpymap[i][j] != 'X')
+			{
+				if (data->map->cpymap[i][j] == '1')
+					ft_multi_map_fill(data, i, j);
+			}
+			j++;
+		}
+		i++;
+	}
 }

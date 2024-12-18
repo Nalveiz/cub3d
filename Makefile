@@ -2,11 +2,13 @@ NAME = cub3D
 
 SRCS = inc/GNL/get_next_line.c cub3d.c utils/ft_check.c utils/ft_error.c \
 		utils/ft_init.c utils/ft_read_map.c utils/ft_txt_control.c utils/ft_free.c \
-		utils/ft_map_control.c utils/ft_map_fill.c \
+		utils/ft_map_control.c utils/ft_map_fill.c game/init_game.c \
 
 OBJS = $(SRCS:.c=.o)
+MINILIBX = ./inc/minilibx-linux/libmlx.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I ./inc/minilibx-linux
+LDFLAGS = -L ./inc/minilibx-linux -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
 
@@ -24,8 +26,9 @@ $(NAME): $(OBJS)
 	@echo '        _______\/////////___\/////////___\/////////_____\/////////______\///////\//__'
 	@echo "\033[0m"
 	@echo "\033[32mBuilding $(NAME)...\033[0m"
+	@make -C inc/minilibx-linux
 	@make -C inc/libft
-	@$(CC) $(OBJS) -Linc/libft -lft -o $(NAME)
+	@$(CC) $(OBJS) $(MINILIBX) $(LDFLAGS) -Linc/libft -lft -o $(NAME)
 	@echo "\033[32m$(NAME) build complete!\033[0m"
 
 

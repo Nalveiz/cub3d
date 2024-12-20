@@ -6,11 +6,20 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:19:40 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/18 14:50:26 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/20 17:17:37 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	ft_swap_double(double *a, double *b)
+{
+	double tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 int	convert(int r, int g, int b)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/18 22:17:12 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/20 17:17:50 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ typedef struct s_ray
 	int		step_y;
 	int		hit;
 	int		side;
+	int 	line_height;
+	int		draw_start;
+	int		draw_end;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
@@ -147,6 +150,7 @@ int		convert(int r, int g, int b);
 void	my_mlx_pixel_put(t_txture *img, int x, int y, int color);
 void	draw_celling_and_flor(t_data *data);
 void	raycasting(t_data *data);
+void	ft_swap_double(double *a, double *b);
 
 
 

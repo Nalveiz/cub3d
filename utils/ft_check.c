@@ -153,17 +153,16 @@ static void	ft_char_check(t_data *data)
 			if (data->flag1 == 1)
 			{
 				data->plyr->x = (double)j;
-				data->ply_x = j;
 				data->plyr->y = (double)i - data->i;
-				data->ply_y = i - data->i;
+				data->plyr->look_pos = data->map->map[i][j];
+				data->map->map[i][j] = '0';
 				data->flag1++;
 			}
-			if (data->flag1 > 2)
-				ft_err_msg("wrong character !!!");
 		}
 		i++;
 	}
-
+	if (data->flag1 > 2 || data->flag1 == 0)
+		ft_err_msg("wrong character !!!");
 }
 
 void	ft_textures_check(t_txture *txtrue, int i)

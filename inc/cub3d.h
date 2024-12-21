@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/20 17:17:50 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/21 16:00:45 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_texture
 typedef struct s_plyr
 {
 	double	x;
+	char	look_pos;
 	double	y;
 	int		map_x;
 	int		map_y;
@@ -127,7 +128,6 @@ typedef struct s_data
 
 void	ft_control(t_data *data);
 void	ft_err_msg(char *error_message);
-void	ft_init(t_data *data, char *av);
 void	ft_read_map(t_data *data);
 void	map_lenght(t_data *data);
 int		ft_is_blank(char *c);

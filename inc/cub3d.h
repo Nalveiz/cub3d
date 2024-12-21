@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/21 16:00:45 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/21 22:48:23 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@
 # define EA 3
 # define C 4
 # define F 5
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define L 65361
+# define R 65363
 
 
 typedef struct s_data t_data;
@@ -151,8 +157,8 @@ void	my_mlx_pixel_put(t_txture *img, int x, int y, int color);
 void	draw_celling_and_flor(t_data *data);
 void	raycasting(t_data *data);
 void	ft_swap_double(double *a, double *b);
-
-
+void	clear_image_buffer(t_data *data, int color);
+int		key_hook(int key, t_data *data);
 
 
 #endif

@@ -6,11 +6,29 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:19:40 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/20 17:17:37 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/21 22:41:41 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void clear_image_buffer(t_data *data, int color)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (x < SWIDTH)
+	{
+		y = 0;
+		while (y < SHEIGHT)
+		{
+			my_mlx_pixel_put(data->txture, x, y, color);
+			y++;
+		}
+		x++;
+	}
+}
 
 void	ft_swap_double(double *a, double *b)
 {

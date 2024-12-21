@@ -6,17 +6,37 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:32:02 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/21 22:39:24 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/21 23:28:42 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// static void	arrow_keys(t_data *data, int key, char **map)
-// {
-
-
-// }
+static void	arrow_keys(t_data *data, int key, double old_dir_x, double old_plane_x)
+{
+	if (key == RIGHT)
+	{
+		data->plyr->dir_x = data->plyr->dir_x * cos(data->plyr->rot_speed)
+			- data->plyr->dir_y * sin(data->plyr->rot_speed);
+		data->plyr->dir_y = old_dir_x * sin(data->plyr->rot_speed) + data->plyr->dir_y
+			* cos(data->plyr->rot_speed);
+		data->rc->plane_x = data->rc->plane_x * cos(data->plyr->rot_speed)
+			- data->rc->plane_y * sin(data->plyr->rot_speed);
+		data->rc->plane_y = old_plane_x * sin(data->plyr->rot_speed) + data->rc->plane_y
+			* cos(data->plyr->rot_speed);
+	}
+	else
+	{
+		data->plyr->dir_x = data->plyr->dir_x * cos(-data->plyr->rot_speed)
+			- data->plyr->dir_y * sin(-data->plyr->rot_speed);
+		data->plyr->dir_y = old_dir_x * sin(-data->plyr->rot_speed) + data->plyr->dir_y
+			* cos(-data->plyr->rot_speed);
+		data->rc->plane_x = data->rc->plane_x * cos(-data->plyr->rot_speed)
+			- data->rc->plane_y * sin(-data->plyr->rot_speed);
+		data->rc->plane_y = old_plane_x * sin(-data->plyr->rot_speed) + data->rc->plane_y
+			* cos(-data->plyr->rot_speed);
+	}
+}
 
 static void movement_keys_helper(t_data *data, int key, char **map)
 {
@@ -72,8 +92,9 @@ int	key_hook(int key, t_data *data)
 	map = data->map->map3d;
 	if (key == W || key == S || key == A || key == D)
 		movement_keys(data, key, map);
-	// if (key == L || key == R)
-	// 	arrow_keys(data, key, map);
+	if (key == LEFT || key == RIGHT)
+		arrow_keys(data, key, data->plyr->dir_x,
+			data->rc->plane_x);
 
 	clear_image_buffer(data, convert(0, 0, 0));
 	draw_celling_and_flor(data);

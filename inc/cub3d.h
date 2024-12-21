@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/21 22:48:23 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/21 23:18:34 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # define A 97
 # define S 115
 # define D 100
-# define L 65361
-# define R 65363
+# define LEFT 65361
+# define RIGHT 65363
 
 
 typedef struct s_data t_data;

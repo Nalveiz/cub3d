@@ -135,6 +135,26 @@ char *ft_space_trimmer(char *line)
 	free(line);
 	return (new_line);
 }
+static	void ft_plyr_wall_check(t_data *data, int i, int j)
+{
+	if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
+		|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
+		data->flag1++;
+	if (data->flag1 == 1 && (data->map->map[i][j] == 'N'
+		|| data->map->map[i][j] == 'S'
+		|| data->map->map[i][j] == 'E'
+		|| data->map->map[i][j] == 'W'))
+	{
+		if (data->map->map[i][j + 1] == '1'  && data->map->map[i][j - 1] == '1'
+			&& data->map->map[i + 1][j] == '1' && data->map->map[i - 1][j] == '1')
+			ft_err_msg("Player is not surrounded by walls");
+		data->plyr->x = (double)j;
+		data->plyr->y = (double)i - data->i;
+		data->plyr->look_pos = data->map->map[i][j];
+		data->map->map[i][j] = '0';
+		data->flag1++;
+	}
+}
 static void	ft_char_check(t_data *data)
 {
 	int	i;
@@ -146,24 +166,14 @@ static void	ft_char_check(t_data *data)
 		j = -1;
 		while (data->map->map[i][++j])
 		{
-
-			if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
-				|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
-				data->flag1++;
-			if (data->flag1 == 1)
-			{
-				data->plyr->x = (double)j;
-				data->plyr->y = (double)i - data->i;
-				data->plyr->look_pos = data->map->map[i][j];
-				data->map->map[i][j] = '0';
-				data->flag1++;
-			}
+			ft_plyr_wall_check(data, i, j);
 		}
 		i++;
 	}
 	if (data->flag1 > 2 || data->flag1 == 0)
 		ft_err_msg("wrong character !!!");
 }
+
 
 void	ft_textures_check(t_txture *txtrue, int i)
 {

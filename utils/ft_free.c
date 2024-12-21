@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:39:44 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/12 21:41:36 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/21 23:34:20 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_double_free(char **str)
 	}
 	free(str);
 }
+
 // ft_free(t_data *data, char *str)
 // {
 

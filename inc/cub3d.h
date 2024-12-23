@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/22 23:11:07 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/23 16:29:00 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ typedef struct s_wall
 	char	*addr[4];
 	int		width[4];
 	int		height[4];
+	int		tex_x;
+	int		tex_y;
+	double	wall_x;
+	int		direction;
 }	t_wall;
 
 typedef struct s_plyr
@@ -172,6 +176,7 @@ void	raycasting(t_data *data);
 void	ft_swap_double(double *a, double *b);
 void	clear_image_buffer(t_data *data, int color);
 int		key_hook(int key, t_data *data);
+void	draw_wall(t_data *data, int x);
 
 
 #endif

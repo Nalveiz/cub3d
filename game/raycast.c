@@ -6,23 +6,11 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:49:50 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/20 18:11:18 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/23 16:29:44 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void draw_wall(t_data *data, int x)
-{
-	int y = 0;
-
-	y = data->rc->draw_start;
-	while (y < data->rc->draw_end)
-	{
-		my_mlx_pixel_put(data->txture, x, y, convert(0, 0, 255));
-		y++;
-	}
-}
 
 static void calculate_line_height(t_data *data)
 {

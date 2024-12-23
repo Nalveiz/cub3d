@@ -3,7 +3,7 @@ NAME = cub3D
 SRCS = inc/GNL/get_next_line.c cub3d.c utils/ft_check.c utils/ft_error.c \
 		utils/ft_read_map.c utils/ft_txt_control.c utils/ft_free.c \
 		utils/ft_map_control.c utils/ft_map_fill.c game/init_game.c \
-		game/raycast.c game/game_utils.c game/control_keys.c \
+		game/raycast.c game/game_utils.c game/control_keys.c game/wall_draw.c \
 
 OBJS = $(SRCS:.c=.o)
 MINILIBX = ./inc/minilibx-linux/libmlx.a

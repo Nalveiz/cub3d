@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/21 23:18:34 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/22 23:11:07 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ typedef struct s_texture
 	int		endian;
 	char	*addr;
 }	t_txture;
+
+typedef struct s_wall
+{
+	void	*img[4];
+	int		bpp[4];
+	int		llength[4];
+	int		endian[4];
+	char	*addr[4];
+	int		width[4];
+	int		height[4];
+}	t_wall;
+
 typedef struct s_plyr
 {
 	double	x;
@@ -121,6 +133,7 @@ typedef struct s_data
 	t_map	*map;
 	t_txture	*txture;
 	t_plyr	*plyr;
+	t_wall	*wall;
 	int 	fd;
 	int		i;
 	int		j;

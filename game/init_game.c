@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 01:54:22 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/21 22:47:52 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/22 23:12:32 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,51 @@ static void	ray_init(t_data *data)
 	raycasting(data);
 }
 
+static void	load_walls(t_data *data, int i)
+{
+	int	width;
+	int	height;
+
+	data->wall->img[i] = mlx_xpm_file_to_image(data->game->mlx,
+		 data->txture->txtres[i], &width, &height);
+	if (!data->wall->img[i])
+		ft_err_msg("Texture not found");
+	data->wall->addr[i] = mlx_get_data_addr(data->wall->img[i],
+		&data->wall->bpp[i], &data->wall->llength[i], &data->wall->endian[i]);
+	data->wall->width[i] = width;
+	data->wall->height[i] = height;
+}
+
+static void image_init(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	data->wall = malloc(sizeof(t_wall));
+	if (!data->wall)
+		ft_err_msg("Malloc failed");
+	while (++i < 4)
+		load_walls(data, i);
+	data->txture->img = mlx_new_image(data->game->mlx, SWIDTH, SHEIGHT);
+	data->txture->addr = mlx_get_data_addr(data->txture->img, &data->txture->bpp,
+		&data->txture->llength, &data->txture->endian);
+}
+
 void	open_window(t_data *data)
 {
+	//int i = 0;
 	data->game = malloc(sizeof(t_game));
 	if (!data->game)
 		ft_err_msg("Malloc failed");
 	data->game->mlx = mlx_init();
 	data->game->win = mlx_new_window(data->game->mlx, SWIDTH, SHEIGHT, "Cub3D");
-	data->txture->img = mlx_new_image(data->game->mlx, SWIDTH, SHEIGHT);
-	data->txture->addr = mlx_get_data_addr(data->txture->img, &data->txture->bpp,
-		&data->txture->llength, &data->txture->endian);
+	image_init(data);
 	draw_celling_and_flor(data);
+	// while (i < 4)
+	// {
+	// 	mlx_put_image_to_window(data->game->mlx, data->game->win, data->wall->img[i], i * 64, 0);
+	// 	i++;
+	// }
 	ray_init(data);
 	mlx_hook(data->game->win, 2, 1L << 0, key_hook, data);
 	mlx_loop(data->game->mlx);

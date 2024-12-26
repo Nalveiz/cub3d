@@ -6,13 +6,12 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:00 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/26 14:16:08 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
 
 # include <stdio.h>
 # include <math.h>
@@ -38,8 +37,7 @@
 # define LEFT 65361
 # define RIGHT 65363
 
-
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_texture
 {
@@ -96,7 +94,7 @@ typedef struct s_ray
 	int		step_y;
 	int		hit;
 	int		side;
-	int 	line_height;
+	int		line_height;
 	int		draw_start;
 	int		draw_end;
 	double	delta_dist_x;
@@ -104,14 +102,13 @@ typedef struct s_ray
 	double	perp_wall_dist;
 	double	time;
 	double	oldtime;
-} t_ray;
-
+}	t_ray;
 
 typedef struct s_map
 {
 	char	**map;
-	int        width;
-	int        height;
+	int		width;
+	int		height;
 	char	**cpymap;
 	char	**map3d;
 	int		count[6];
@@ -127,27 +124,24 @@ typedef struct s_game
 
 typedef struct s_data
 {
-	char	*av;
-	void	*img;
-	char	*addr;
-	t_game	*game;
-	int		map_len;
-	int		flag;
-	int		flag1;
-	t_map	*map;
+	char		*av;
+	void		*img;
+	char		*addr;
+	t_game		*game;
+	int			map_len;
+	int			flag;
+	int			flag1;
+	t_map		*map;
 	t_txture	*txture;
-	t_plyr	*plyr;
-	t_wall	*wall;
-	int 	fd;
-	int		i;
-	int		j;
-	int		ply_x;
-	int		ply_y;
-	t_ray	*rc;
+	t_plyr		*plyr;
+	t_wall		*wall;
+	int			fd;
+	int			i;
+	int			j;
+	int			ply_x;
+	int			ply_y;
+	t_ray		*rc;
 }	t_data;
-
-
-
 
 void	ft_control(t_data *data);
 void	ft_err_msg(char *error_message);
@@ -163,7 +157,7 @@ void	ft_rgb_control(t_data *data, char **rgb, int fc);
 void	ft_comma_control(char *str);
 void	ft_double_free(char **str);
 void	ft_map_check(t_data *data);
-void	ft_cpymap_fill(t_data * data);
+void	ft_cpymap_fill(t_data *data);
 void	ft_flood_fill(t_map *map, int x, int y);
 void	ft_flood_fill_chck(t_data *data);
 
@@ -173,10 +167,7 @@ int		convert(int r, int g, int b);
 void	my_mlx_pixel_put(t_txture *img, int x, int y, int color);
 void	draw_celling_and_flor(t_data *data);
 void	raycasting(t_data *data);
-void	ft_swap_double(double *a, double *b);
-void	clear_image_buffer(t_data *data, int color);
 int		key_hook(int key, t_data *data);
 void	draw_wall(t_data *data, int x);
-
 
 #endif

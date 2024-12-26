@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:14:41 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/22 02:01:17 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/26 19:50:21 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_cpymap_fill(t_data * data)
 		}
 		map->cpymap[data->i] = ft_strdup(map->map3d[data->i]);
 	}
+	ft_wall_control(data);
 }
 
 

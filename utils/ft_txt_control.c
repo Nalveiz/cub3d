@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 01:07:32 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/02 23:18:44 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/26 19:35:49 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,25 @@ void	ft_rgb_control(t_data *data, char **rgb, int fc)
 	}
 	free(rgb);
 }
-// ft_rgb_format();
+void	ft_wall_control(t_data *data)
+{
+	int i;
+	int j;
+	t_map *map;
+
+	map = data->map;
+	i = -1;
+	while (map->cpymap[++i])
+	{
+		j = -1;
+		while (map->cpymap[i][++j])
+		{
+			if (map->cpymap[i][j] == '0'
+				&& ((i +1 < map->height
+				&& (!map->cpymap[i +1][j] || j > (int)ft_strlen(map->cpymap[i +1])))
+				|| (i -1 >= 0 && (!map->cpymap[i - 1][j]
+				|| j > (int)ft_strlen(map->cpymap[i - 1])))))
+				ft_err_msg("Map must be surrounded by walls");
+		}
+	}
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/26 14:16:08 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/26 19:36:09 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ void	ft_comma_control(char *str);
 void	ft_double_free(char **str);
 void	ft_map_check(t_data *data);
 void	ft_cpymap_fill(t_data *data);
+void	ft_wall_control(t_data *data);
+
 void	ft_flood_fill(t_map *map, int x, int y);
 void	ft_flood_fill_chck(t_data *data);
 

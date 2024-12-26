@@ -137,21 +137,18 @@ char *ft_space_trimmer(char *line)
 }
 static	void ft_plyr_wall_check(t_data *data, int i, int j)
 {
-	if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
-		|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
+	if (data->map->cpymap[i][j] == 'N' || data->map->cpymap[i][j] == 'S'
+		|| data->map->cpymap[i][j] == 'E' || data->map->cpymap[i][j] == 'W')
 		data->flag1++;
-	if (data->flag1 == 1 && (data->map->map[i][j] == 'N'
-		|| data->map->map[i][j] == 'S'
-		|| data->map->map[i][j] == 'E'
-		|| data->map->map[i][j] == 'W'))
+	if (data->flag1 == 1 && (data->map->cpymap[i][j] == 'N'
+		|| data->map->cpymap[i][j] == 'S'
+		|| data->map->cpymap[i][j] == 'E'
+		|| data->map->cpymap[i][j] == 'W'))
 	{
-		if (data->map->map[i][j + 1] == '1'  && data->map->map[i][j - 1] == '1'
-			&& data->map->map[i + 1][j] == '1' && data->map->map[i - 1][j] == '1')
-			ft_err_msg("Player is not surrounded by walls");
 		data->plyr->x = (double)j;
-		data->plyr->y = (double)i - data->i;
-		data->plyr->look_pos = data->map->map[i][j];
-		data->map->map[i][j] = '0';
+		data->plyr->y = (double)i;
+		data->plyr->look_pos = data->map->cpymap[i][j];
+		data->map->cpymap[i][j] = '0';
 		data->flag1++;
 	}
 }
@@ -160,11 +157,11 @@ static void	ft_char_check(t_data *data)
 	int	i;
 	int	j;
 
-	i = data->i;
-	while (data->map->map[i])
+	i = 0;
+	while (data->map->cpymap[i])
 	{
 		j = -1;
-		while (data->map->map[i][++j])
+		while (data->map->cpymap[i][++j])
 		{
 			ft_plyr_wall_check(data, i, j);
 		}
@@ -212,7 +209,7 @@ void	ft_textrue_control(t_data *data, size_t last)
 	ft_comma_control(data->txture->txtres[F]);
 	ft_rgb_control(data, ft_split(data->txture->txtres[C], ','), 1);
 	ft_rgb_control(data, ft_split(data->txture->txtres[F], ','), 0);
-	ft_char_check(data);
 	ft_map_check(data);
+	ft_char_check(data);
 }
 

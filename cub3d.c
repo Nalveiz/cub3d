@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/21 23:53:56 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/26 19:23:57 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 		ft_err_msg("Malloc failed");
 	ft_init(data, av[1]);
 	ft_read_map(data);
-	ft_flood_fill(data->map, data->ply_x, data->ply_y);
+	ft_flood_fill(data->map, data->plyr->x, data->plyr->y);
 	ft_flood_fill_chck(data);
 	int i = 0;
 	while (data->map->map3d[i])

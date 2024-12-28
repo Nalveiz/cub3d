@@ -89,6 +89,8 @@ static char	*my_strdup(char *s1)
 
 static void	ft_check_txture_helper(char*line, char *format, int i, t_data *data)
 {
+	if (i < 0 || i >= (int)ft_strlen(line))
+		ft_err_msg("Wrong texture format");
 	if (ft_strncmp(format, "SO", 2) == 0 && ++data->map->count[SO] == 1)
 		data->txture->txtres[SO] = my_strdup
 			(ft_substr(line, i, (ft_strlen(line) -1)));
@@ -121,17 +123,23 @@ void	ft_check_txtrue(t_data *data, char *line)
 	while (line[i] && line[i] != ' ' && !(line[i] < 14 && line[i] > 8))
 		i++;
 	format = ft_substr(line, 0, i);
-	ft_check_txture_helper(line, format, i, data);
-	free(format);
+	if (format)
+	{
+		ft_check_txture_helper(line, format, i, data);
+		free(format);
+	}
 }
 
 char *ft_space_trimmer(char *line)
 {
 	char	*spaces;
+	char	*trimmed;
 	char	*new_line;
 
 	spaces = "\t\v\f\r\n ";
-	new_line = ft_strdup(ft_strtrim(line, spaces));
+	trimmed = ft_strtrim(line, spaces);
+	new_line = ft_strdup(trimmed);
+	free(trimmed);
 	free(line);
 	return (new_line);
 }

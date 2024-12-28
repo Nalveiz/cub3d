@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 23:22:27 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/13 16:04:35 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/28 15:58:50 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static	void	ft_around_map_check(t_data *data, int k)
 	{
 		c = data->map_len -1;
 		i = k;
-		while (i < c && (data->map->map[i][data->j] == ' ' || data->map->map[i][data->j] == '\n'
-			|| (int)ft_strlen(data->map->map[i]) <= data->j))
+		while (i < c && ((int)ft_strlen(data->map->map[i]) <= data->j
+			|| data->map->map[i][data->j] == ' ' || data->map->map[i][data->j] == '\n'))
 			i++;
 		if (i == c)
 		{
@@ -64,8 +64,8 @@ static	void	ft_around_map_check(t_data *data, int k)
 		}
 		if (data->map->map[i][data->j] != '1' && data->map->map[i][data->j])
 			ft_err_msg("sütün başı 1 mi");
-		while (i < c && (data->map->map[c][data->j] == ' '
-			|| data->map->map[c][data->j] == '\n' || (int)ft_strlen(data->map->map[c]) <= data->j))
+		while (i < c && ((int)ft_strlen(data->map->map[c]) <= data->j
+			|| data->map->map[c][data->j] == ' ' || data->map->map[c][data->j] == '\n'))
 			c--;
 		if (data->map->map[c][data->j] != '1' && data->map->map[i][data->j])
 			ft_err_msg("sütün sonu 1 mi");

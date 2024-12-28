@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/26 19:36:09 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/28 16:01:56 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
-# define SWIDTH 800
-# define SHEIGHT 600
+# define SWIDTH 1400
+# define SHEIGHT 800
 # define SO 0
 # define NO 1
 # define WE 2
@@ -138,8 +138,6 @@ typedef struct s_data
 	int			fd;
 	int			i;
 	int			j;
-	int			ply_x;
-	int			ply_y;
 	t_ray		*rc;
 }	t_data;
 

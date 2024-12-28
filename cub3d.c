@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/26 19:23:57 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/28 15:55:46 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,18 @@ static	void	ft_init(t_data *data, char *av)
 		ft_err_msg("Malloc failed");
 	data->map->height = 0;
 	data->map->width = 0;
+	data->map->map = NULL;
+	data->map->cpymap = NULL;
+	data->map->map3d = NULL;
 	data->plyr->x = 0;
 	data->plyr->y = 0;
-	data->ply_x = 0;
-	data->ply_y = 0;
 	data->flag = 0;
 	data->flag1 = 0;
-	ft_memset(data->map->count, 0, 6);
-	ft_memset(data->txture->c, 0, 3);
-	ft_memset(data->txture->f, 0, 3);
+	ft_memset(data->map->count, 0, sizeof(int) * 6);
+	ft_memset(data->txture->c, 0, sizeof(int) * 3);
+	ft_memset(data->txture->f, 0, sizeof(int) * 3);
 	data->i = 0;
 	data->j = 0;
-
-
 }
 
 int	main(int ac, char **av)

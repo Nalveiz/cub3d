@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_fill.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:14:41 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/26 19:50:21 by musozer          ###   ########.fr       */
+/*   Updated: 2024/12/28 15:59:01 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_cpymap_fill(t_data * data)
 		}
 		map->cpymap[data->i] = ft_strdup(map->map3d[data->i]);
 	}
+	map->cpymap[data->i] = NULL;
 	ft_wall_control(data);
 }
 

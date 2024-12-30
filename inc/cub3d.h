@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/28 16:01:56 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/29 15:49:44 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	ft_read_map(t_data *data);
 void	map_lenght(t_data *data);
 int		ft_is_blank(char *c);
 void	ft_is_space(t_data *data);
+char	*my_strdup(char *s1);
 int		ft_count_check(t_data *data);
 void	ft_check_txtrue(t_data *data, char *line);
 void	ft_textrue_control(t_data *data, size_t size);

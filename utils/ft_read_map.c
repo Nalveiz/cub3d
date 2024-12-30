@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:09:10 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/28 15:56:23 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/29 16:18:21 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,3 @@ void	ft_read_map(t_data *data)
 	close(data->fd);
 	ft_is_space(data);
 }
-
-

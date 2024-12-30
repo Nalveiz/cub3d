@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_fill.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:14:41 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/28 15:59:01 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/30 17:22:55 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	ft_fill_space(t_data *data, int i, int j)
 {
-	char **map;
+	char	**map;
 
 	map = data->map->map3d;
 	if ((map[i][j] == '0' || map[i][j] == 'N'
@@ -29,31 +29,31 @@ static	void	ft_fill_space(t_data *data, int i, int j)
 
 static	void	ft_multi_map_fill(t_data *data, int i, int j)
 {
-    char	**map;
+	char	**map;
 
 	map = data->map->cpymap;
-	if ((i - 1  >= 0
-		&& (map[i - 1][j] != 'B'
-		&& map[i - 1][j] != '1'))
-		|| (j - 1 >= 0
-		&& (map[i - 1][j] != 'B'
-		&& map[i - 1][j] != '1'))
-		|| (i + 1 < data->map->height
-		&& (map[i + 1][j] != 'B'
-		&& map[i + 1][j] != '1'))
-		|| (j + 1 < (int)ft_strlen(map[i])
-		&& (map[i][j + 1] != 'B'
-		&& map[i][j + 1] != '1')))
+	if ((i - 1) >= 0 && map[i - 1]
+		&& (map[i - 1][j] != 'B' && map[i - 1][j] != '1'))
 		ft_err_msg("Multi map fill error");
+	if ((j - 1) >= 0 && map[i]
+		&& (map[i][j - 1] != 'B' && map[i][j - 1] != '1'))
+		ft_err_msg("Multi map fill error: j-1");
+	if (i + 1 < data->map->height
+		&& map[i + 1] && (map[i + 1][j] != 'B' && map[i + 1][j] != '1'))
+		ft_err_msg("Multi map fill error: i+1");
+	if (j + 1 < (int)ft_strlen(map[i])
+		&& map[i] && (map[i][j + 1] != 'B' && map[i][j + 1] != '1'))
+		ft_err_msg("Multi map fill error: j+1");
 }
-void	ft_cpymap_fill(t_data * data)
+
+void	ft_cpymap_fill(t_data *data)
 {
 	t_map	*map;
 
 	map = data->map;
 	map->cpymap = (char **)malloc(sizeof(char *) * (data->map->height + 1));
 	if (map->cpymap == NULL)
-	    ft_err_msg("Malloc failed");
+		ft_err_msg("Malloc failed");
 	data->i = -1;
 	while (map->map3d[++data->i])
 	{
@@ -69,7 +69,6 @@ void	ft_cpymap_fill(t_data * data)
 	ft_wall_control(data);
 }
 
-
 void	ft_flood_fill(t_map *map, int x, int y)
 {
 	if (y < 0 || x < 0 || y >= map->height
@@ -83,6 +82,7 @@ void	ft_flood_fill(t_map *map, int x, int y)
 	ft_flood_fill(map, x +1, y);
 	ft_flood_fill(map, x -1, y);
 }
+
 void	ft_flood_fill_chck(t_data *data)
 {
 	int	i;
@@ -94,7 +94,8 @@ void	ft_flood_fill_chck(t_data *data)
 		j = 0;
 		while (data->map->cpymap[i][j])
 		{
-			if (data->map->cpymap[i][j] != 'B' && data->map->cpymap[i][j] != 'X')
+			if (data->map->cpymap[i][j] != 'B'
+				&& data->map->cpymap[i][j] != 'X')
 			{
 				if (data->map->cpymap[i][j] == '1')
 					ft_multi_map_fill(data, i, j);

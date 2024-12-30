@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
+/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:09:57 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/28 15:55:46 by soksak           ###   ########.fr       */
+/*   Updated: 2024/12/30 17:02:57 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ int	main(int ac, char **av)
 	ft_read_map(data);
 	ft_flood_fill(data->map, data->plyr->x, data->plyr->y);
 	ft_flood_fill_chck(data);
-	int i = 0;
-	while (data->map->map3d[i])
-	{
-		printf("%s\n", data->map->map3d[i]);
-		i++;
-	}
+
+	// int i = 0;
+	// while (data->map->map3d[i])
+	// {
+	// 	printf("%s\n", data->map->map3d[i]);
+	// 	i++;
+	// }
 	open_window(data);
 	// int i = 0;
 	// while (data->map->cpymap[i])

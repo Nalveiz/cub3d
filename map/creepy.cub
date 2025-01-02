@@ -1,18 +1,18 @@
 C    		255	,   	4	  ,		1
 
 F  45	  , 43, 44
-SO textures/respawn_anchor_side4.xpm
-NO textures/respawn_anchor_side0.xpm
-WE textures/respawn_anchor_side3.xpm
-EA textures/respawn_anchor_side2.xpm
+SO textures/netherrack_02.xpm
+NO textures/netherrack_01.xpm
+WE textures/basalt_top.xpm
+EA textures/warped_nylium.xpm
 
 
 1111111111
 1000010011
 10001 101
-101111001
-101E10011
-101110001
+101011001
+101N10011
+101000001
 111111111
 
 

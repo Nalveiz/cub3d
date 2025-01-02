@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 01:54:22 by soksak            #+#    #+#             */
-/*   Updated: 2025/01/02 04:44:09 by soksak           ###   ########.fr       */
+/*   Updated: 2025/01/02 08:24:49 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ray_init(t_data *data)
 	data->plyr->map_x = (int)data->plyr->x;
 	data->plyr->map_y = (int)data->plyr->y;
 	data->rc->hit = 0;
-	data->plyr->move_speed = 0.10;
+	data->plyr->move_speed = 0.12;
 	data->plyr->rot_speed = 0.10;
 	calculate_directions(data);
 	raycasting(data);

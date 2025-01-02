@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:32:02 by soksak            #+#    #+#             */
-/*   Updated: 2025/01/02 01:52:13 by soksak           ###   ########.fr       */
+/*   Updated: 2025/01/02 05:43:36 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,11 @@ int	key_hook(int key, t_data *data)
 	map = data->map->map3d;
 	if (key == W || key == S || key == A || key == D)
 		movement_keys(data, key, map);
-	if (key == LEFT || key == RIGHT)
+	else if (key == LEFT || key == RIGHT)
 		arrow_keys(data, key, data->plyr->dir_x,
 			data->rc->plane_x);
+	else if (key == ESC)
+		close_window(data);
 	draw_celling_and_flor(data);
 	raycasting(data);
 	return (0);

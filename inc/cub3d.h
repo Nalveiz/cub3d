@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2025/01/02 04:42:45 by soksak           ###   ########.fr       */
+/*   Updated: 2025/01/02 07:14:43 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define A 97
 # define S 115
 # define D 100
+# define ESC 65307
 # define LEFT 65361
 # define RIGHT 65363
 
@@ -96,8 +97,6 @@ typedef struct s_ray
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
-	double	time;
-	double	oldtime;
 }	t_ray;
 
 typedef struct s_map

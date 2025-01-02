@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 23:22:27 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/30 16:55:36 by musozer          ###   ########.fr       */
+/*   Updated: 2025/01/02 05:27:04 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static	void	ft_wall_check(char *line)
 	while (line[i] && line[i] == ' ')
 		i++;
 	if (line[i] != '1')
-		ft_err_msg("satır başı 1 mi");
+		ft_err_msg("Map is not closed!");
 	i = ft_strlen(line) -2;
 	while (i >= 0 && line[i] == ' ')
 		i--;
 	if (i >= 0 && line[i] != '1')
-		ft_err_msg("satır sonu 1 mi");
+		ft_err_msg("Map is not closed!");
 }
 
 static	void	ft_char_check(char *line, int flag)
@@ -39,9 +39,9 @@ static	void	ft_char_check(char *line, int flag)
 			&& line[i] != 'E' && line[i] != 'W'
 			&& line[i] != '0' && line[i] != '1'
 			&& line[i] != ' ' && line[i] != '\n')
-			ft_err_msg("Wrong ccharacter in map");
+			ft_err_msg("Wrong character in map");
 		if (flag == 0 && (line[i] != '1' && line[i] != ' ' && line[i] != '\n'))
-			ft_err_msg("ilk satır komple 1 mi");
+			ft_err_msg("Map is not closed");
 		i++;
 	}
 }
@@ -64,13 +64,13 @@ static	void	ft_around_map_check(t_data *data, int k, int i)
 			continue ;
 		}
 		if (data->map->map[i][data->j] != '1' && data->map->map[i][data->j])
-			ft_err_msg("sütün başı 1 mi");
+			ft_err_msg("Map is not closed");
 		while (i < c && ((int)ft_strlen(data->map->map[c]) <= data->j
 				|| data->map->map[c][data->j] == ' '
 			|| data->map->map[c][data->j] == '\n'))
 			c--;
 		if (data->map->map[c][data->j] != '1' && data->map->map[i][data->j])
-			ft_err_msg("sütün sonu 1 mi");
+			ft_err_msg("Map is not closed");
 		data->j++;
 	}
 }

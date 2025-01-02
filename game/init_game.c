@@ -6,7 +6,7 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 01:54:22 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/26 12:16:01 by soksak           ###   ########.fr       */
+/*   Updated: 2025/01/02 04:44:09 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void	open_window(t_data *data)
 	draw_celling_and_flor(data);
 	ray_init(data);
 	mlx_hook(data->game->win, 2, 1L << 0, key_hook, data);
+	mlx_hook(data->game->win, 17, 0, close_window, data);
 	mlx_loop(data->game->mlx);
 }

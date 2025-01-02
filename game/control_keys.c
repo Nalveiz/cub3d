@@ -6,11 +6,17 @@
 /*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:32:02 by soksak            #+#    #+#             */
-/*   Updated: 2024/12/26 12:04:18 by soksak           ###   ########.fr       */
+/*   Updated: 2025/01/02 01:52:13 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+int	close_window(t_data *data)
+{
+	ft_free(data, NULL);
+	return (0);
+}
 
 static void	arrow_keys(t_data *data, int key, double old_dx, double old_px)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: soksak <soksak@42istanbul.com.tr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:12:22 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/29 15:49:44 by musozer          ###   ########.fr       */
+/*   Updated: 2025/01/02 04:42:45 by soksak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
-# define SWIDTH 1400
+# define SWIDTH 1350
 # define SHEIGHT 800
 # define SO 0
 # define NO 1
@@ -37,13 +37,9 @@
 # define LEFT 65361
 # define RIGHT 65363
 
-typedef struct s_data	t_data;
-
 typedef struct s_texture
 {
 	char	**txtres;
-	char	**floor;
-	char	**ceiling;
 	int		c[3];
 	int		f[3];
 	void	*img;
@@ -116,7 +112,6 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_data	*data;
 	void	*mlx;
 	void	*win;
 
@@ -125,8 +120,6 @@ typedef struct s_game
 typedef struct s_data
 {
 	char		*av;
-	void		*img;
-	char		*addr;
 	t_game		*game;
 	int			map_len;
 	int			flag;
@@ -158,9 +151,11 @@ void	ft_double_free(char **str);
 void	ft_map_check(t_data *data);
 void	ft_cpymap_fill(t_data *data);
 void	ft_wall_control(t_data *data);
-
 void	ft_flood_fill(t_map *map, int x, int y);
 void	ft_flood_fill_chck(t_data *data);
+void	ft_free(t_data *data, char *s);
+void	ft_data_free(t_data *data);
+int		close_window(t_data *data);
 
 // Game
 void	open_window(t_data *data);

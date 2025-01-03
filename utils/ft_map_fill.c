@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:14:41 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/30 17:22:55 by musozer          ###   ########.fr       */
+/*   Updated: 2025/01/03 03:57:17 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,20 @@ static	void	ft_multi_map_fill(t_data *data, int i, int j)
 	if ((i - 1) >= 0 && map[i - 1]
 		&& (map[i - 1][j] != 'B' && map[i - 1][j] != '1'))
 		ft_err_msg("Multi map fill error");
-	if ((j - 1) >= 0 && map[i]
+	else if ((j - 1) >= 0 && map[i]
 		&& (map[i][j - 1] != 'B' && map[i][j - 1] != '1'))
-		ft_err_msg("Multi map fill error: j-1");
-	if (i + 1 < data->map->height
+		ft_err_msg("Multi map fill error");
+	else if (i + 1 < data->map->height
 		&& map[i + 1] && (map[i + 1][j] != 'B' && map[i + 1][j] != '1'))
-		ft_err_msg("Multi map fill error: i+1");
-	if (j + 1 < (int)ft_strlen(map[i])
+		ft_err_msg("Multi map fill error");
+	else if (j + 1 < (int)ft_strlen(map[i])
 		&& map[i] && (map[i][j + 1] != 'B' && map[i][j + 1] != '1'))
-		ft_err_msg("Multi map fill error: j+1");
+		ft_err_msg("Multi map fill error");
 }
+
+
+
+
 
 void	ft_cpymap_fill(t_data *data)
 {

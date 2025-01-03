@@ -6,7 +6,7 @@
 /*   By: musozer <musozer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:09:10 by musozer           #+#    #+#             */
-/*   Updated: 2024/12/29 16:18:21 by musozer          ###   ########.fr       */
+/*   Updated: 2025/01/03 16:11:00 by musozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	map_lenght(t_data *data)
 		i++;
 		free(line);
 	}
+	if (i == 0)
+		ft_err_msg("Empty file");
 	data->map_len = i;
 	close(data->fd);
 }
